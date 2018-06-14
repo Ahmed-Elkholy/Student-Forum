@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Reports";
+    var list = ViewBag.list;
+    var count = ViewBag.count;
+}
+
+<div class="container"><h2><b>Reports from Courses you manage</b></h2><br /></div>
+
+<div class="alert alert-danger" role="alert"> Question Posting failed..Please retry</div>
+<div class="container">
+    <form action="" method="post">
+        @if (count == 0)
+        {
+            <h3>No Reports at the time</h3><br />
+
+        }
+        else
+        {
+            for (var i = 0; i < count / 6; i++)
+            {
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">@list[i * 6]</div>
+                    <div class="panel-body">
+                        <b>Question title:</b> @list[i * 6 + 1] <br />
+                        <b>Question:</b> @list[i * 6 + 2] <br />
+                        <b>Asked by :</b> @list[i * 6 + 3] <br />
+                        <b>Reported by :</b> @list[i * 6 + 4] <br />
+                        <button formaction="DeleteQuestion" type="submit" class="btn btn-default" value="@list[i * 6+5]" name="QID">Remove Question</button>
+                        <button formaction="DeleteReport" type="submit" class="btn btn-default" value="@list[i *6 + 5]" name="QID">Ignore Report</button>
+                    </div>
+                </div>
+            }
+        }
+    </form>
+</div>

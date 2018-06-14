@@ -1,0 +1,89 @@
+﻿@model CUFE_SF.Models.RegisterViewModelSA
+@{
+    ViewBag.Title = "RegisterStudentActivity";
+    Layout = "~/Views/Shared/_LayoutX.cshtml";
+}
+
+@using (Html.BeginForm("AddSA", "Register", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <script>
+        function validateInput() {
+            var ins = document.getElementsByTagName("input");
+            var txs = document.getElementsByTagName("textarea");
+            var pass = true;
+            for (var j = 0; j < txs.length; j++) {
+                if (txs[j].value == "")
+                    pass = false;
+            };
+            for (var j = 0; j < ins.length; j++) {
+                if (ins[j].value == "")
+                    pass = false;
+            };
+            var pwd = document.getElementById("pwd");
+            var cpwd = document.getElementById("cpwd");
+            if (pwd.value != cpwd.value) pass = false;
+
+            if (pass) document.getElementById("register").removeAttribute("disabled");
+            else {
+                var att = document.createAttribute("disabled");
+                document.getElementById("register").setAttributeNode(att);
+            }
+        };
+    </script>
+
+    <div class="container"><h2><b>Student Registeration</b></h2><br /></div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container row">
+        <div class="col-lg-6">
+            <!--<form action="AddStudent" method="post" oninput="validateInput();"> -->
+            <div class="form-group">
+                <label for="name">Activity Name: </label>
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+
+                <!--<input type="text" class="form-control" id="name" name="Username" placeholder="Username">-->
+            </div>
+           
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                <!--<input type="email" class="form-control" id="email" name="Email" placeholder="Email Address">-->
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                <!--<input type="password" class="form-control" name="Password" id="pwd" placeholder="Password">-->
+            </div>
+            <div class="form-group">
+                <label for="cpwd">Confirm Password:</label>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                <!--<input type="password" class="form-control" id="cpwd" name="CPassword" placeholder="Confirm Password"> -->
+                <div class="form-group">
+                    <br />
+                    <label for="About">About:</label>
+                    @Html.TextAreaFor(m => m.About, new { @class = "form-control", placeholder = "Describe the student activity here ...", style = "min-width: 50%" })
+                    @Html.ValidationMessageFor(m => m.About, "", new { @class = "text-danger" })
+                </div>
+                </div>
+            <button type="submit" id="register" class="btn btn-default" formmethod="post">Register</button>
+        </div>
+    </div>
+
+    <br /><br />
+    <div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+            <span class="sr-only">75% Complete (success)</span>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

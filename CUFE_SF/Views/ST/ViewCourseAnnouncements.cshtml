@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ViewCourseAnnouncements";
+    var list = ViewBag.list;
+    var count = ViewBag.count;
+}
+
+<div class="container"><h2><b>View Course Announcements</b></h2><br /></div>
+
+<div class="container">
+    @if (list != null)
+    {
+        for (var i = 0; i < count / 2; i++)
+        {
+            <div class="panel panel-info">
+                <div class="panel-heading">@list[i]</div>
+                <div class="panel-body">
+                    @list[i + 1]
+                </div>
+            </div>
+            <br />
+        }
+    }
+    else
+    {
+        <h2>No announcements in this course</h2>
+    }
+</div>

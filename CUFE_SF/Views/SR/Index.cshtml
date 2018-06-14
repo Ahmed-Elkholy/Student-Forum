@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>Student Representative</h1>
+    <p class="lead">Create and Manage Courses</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Create Course</h2>
+            <p>
+                This allows you to add a new course.
+            </p>
+            <p><a class="btn btn-default" href="~/SR/CreateCourse">Create Course &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Manage Course</h2>
+            <p>
+                This allows you to manage an existing course.
+            </p>
+            <p><a class="btn btn-default" href="~/SR/UpdateCourse">Manage Course &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Delete Course</h2>
+            <p>
+                This allows you to delete an existing course.
+            </p>
+            <p><a class="btn btn-default" href="~/SR/DeleteCourse">Delete Course &raquo;</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>View Course Contact Info.</h2>
+            <p>
+                This allows you to view the contact information of students enrolled in a course.
+            </p>
+            <p><a class="btn btn-default" href="~/SR/ViewCourses">View Courses &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Enroll in a course</h2>
+            <p>
+                Choose a course to enroll in.
+            </p>
+            <p><a class="btn btn-default" href="/ST/Enroll">Enroll &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Post a question</h2>
+            <p>
+                Post a question in a course.
+            </p>
+            <p><a class="btn btn-default" href="/ST/ChooseCourseEnrolled">Add Question &raquo;</a></p>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>View Questions</h2>
+                <p>
+                    View asked questions related to chosen course to answer/rate them.
+                </p>
+                <p><a class="btn btn-default" href="/ST/ChooseCourseToAnswerPost">View Questions &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Post Announcements</h2>
+                <p>
+                    Post announcements about courses you manage.
+                </p>
+                <p><a class="btn btn-default" type="submit" href="/SR/ViewCoursesToPost" frommethod="get">Post an Announcement &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>View Reported questions</h2>
+                <p>
+                    View questions reported by students and take action.
+                </p>
+                <p><a class="btn btn-default" type="submit" href="/SR/ViewReports" frommethod="get">View Reports &raquo;</a></p>
+            </div>
+        </div>
+    
+</div>

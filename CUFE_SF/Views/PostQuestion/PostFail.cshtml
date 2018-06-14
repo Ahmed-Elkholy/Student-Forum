@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "PostFail";
+}
+
+<br /><br />
+<br /><br />
+<div class="alert alert-danger" role="alert"> Question Posting failed..Please retry</div>
+<div class="container"><h2><b>Post your question below</b></h2><br /></div>
+
+<div class="container">
+    <form action="PostQuestion" method="post" oninput="validateInput();">
+
+        <div class="form-group">
+            <label for="QuesArea">Title:</label>
+            <textarea class="form-control" rows="1" id="ques" name="title" placeholder="Title ..." style="min-width: 75%"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="QuesArea">Question:</label>
+            <textarea class="form-control" rows="8" id="ques" name="question" placeholder="Write your question here ..." style="min-width: 75%"></textarea>
+        </div>
+
+        <button type="submit" id="post" class="btn btn-default" formmethod="post" disabled="">Post</button>
+    </form>
+</div>
+
+<script>
+    function validateInput() {
+        var txs = document.getElementsByTagName("textarea");
+        var pass = true;
+        for (var j = 0; j < txs.length; j++) {
+            if (txs[j].value == "")
+                pass = false;
+        };
+        if (pass) document.getElementById("post").removeAttribute("disabled");
+        else {
+            var att = document.createAttribute("disabled");
+            document.getElementById("post").setAttributeNode(att);
+        }
+    };
+</script>
+

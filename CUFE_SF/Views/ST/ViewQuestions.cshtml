@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "View Questions";
+    var list = ViewBag.list;
+    var Code = ViewBag.course;
+}
+<div class="container"><h2><b>View Questions</b></h2><br /></div>
+
+<div class="container">
+    <form action="ViewQuestion" method="get">
+        <div class="alert alert-info" role="alert"><b>Heads up!</b> Press on the question you would like to view</div>
+        <div class="list-group" role="group" id="courses">
+            @foreach (var item in list)
+            {
+                <input type="hidden" name="Code" value="@Code" />
+                <button type="submit" class="btn btn-default" value="@item.QID" name="question">@item.Title</button>
+                <br /><br />
+            }
+        </div>
+    </form>
+</div>
+
+

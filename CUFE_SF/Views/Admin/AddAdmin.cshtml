@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "AddAdmin";
+}
+
+<script>
+    function validateInput() {
+        var ins = document.getElementsByTagName("input");
+        var pass = true;
+        for (var j = 0; j < ins.length; j++) {
+            if (ins[j].value == "")
+                pass = false;
+        };
+        var pwd = document.getElementById("pwd");
+        var cpwd = document.getElementById("cpwd");
+        if (pwd.value != cpwd.value) pass = false;
+
+        if (pass) document.getElementById("addAdmin").removeAttribute("disabled");
+        else {
+            var att = document.createAttribute("disabled");
+            document.getElementById("addAdmin").setAttributeNode(att);
+        }
+    };
+</script>
+
+<div class="container"><h2><b>Add Admin</b></h2><br /></div>
+<div class="container">
+    <form action="" method="post" oninput="validateInput();">
+        <div class="form-group">
+            <label for="usn">Username </label>
+            <input type="text" class="form-control" id="usn" name="Username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email </label>
+            <input type="text" class="form-control" id="email" name="Email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password </label>
+            <input type="password" class="form-control" id="pwd" name="Password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="cpwd">Confirm password </label>
+            <input type="password" class="form-control" id="cpwd" name="CPassword" placeholder="Confirm password">
+        </div>
+        <button type="submit" formaction="AddNewAdmin" id="addAdmin" class="btn btn-default">Add Admin</button>
+    </form>
+</div>

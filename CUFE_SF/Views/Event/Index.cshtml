@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var list = ViewBag.list;
+    var count = ViewBag.count;
+}
+
+<div class="container"><h2><b>Events</b></h2><br /></div>
+<div class="container">
+    <form action="ViewEvent" method="get">
+        @for (var i = 0; i < count / 6; i++)
+        {
+            <div class="panel panel-info">
+                <div class="panel-heading">@list[i * 6]</div>
+                <div class="panel-body">
+                    <b>Title:</b> @list[i * 6 + 1] <br />
+                    <b>Date:</b> @list[i * 6 + 2] <br /><br />
+                    <button type="submit" class="btn btn-default" value="@list[i * 6 + 1]" name="EName">View Event</button>
+                </div>
+            </div>
+        }
+    </form>
+</div>

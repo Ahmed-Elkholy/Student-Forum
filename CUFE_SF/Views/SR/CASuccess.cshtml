@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "CASuccess";
+}
+
+<script>
+    function validateInput() {
+        var ins = document.getElementsByTagName("input");
+        var pass = true;
+        for (var j = 0; j < ins.length; j++) {
+            if (ins[j].value == "")
+                pass = false;
+        };
+
+        if (pass) document.getElementById("addCourse").removeAttribute("disabled");
+        else {
+            var att = document.createAttribute("disabled");
+            document.getElementById("addCourse").setAttributeNode(att);
+        }
+    };
+</script>
+
+<div class="container"><h2><b>Create Course</b></h2><br /></div>
+<div class="container">
+    <form action="AddCourse" method="post" oninput="validateInput();">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="code">Course Code: </label>
+                    <input type="text" class="form-control" id="code" name="Code" placeholder="Course Code">
+                </div>
+                <div class="form-group">
+                    <label for="name">Course Name: </label>
+                    <input type="text" class="form-control" id="name" name="Name" placeholder="Course Name">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-default" formmethod="post" id="addCourse" disabled="">Add Course</button>
+    </form>
+</div>
+
+<br /><div class="alert alert-success" role="alert"> Course added successfully</div>

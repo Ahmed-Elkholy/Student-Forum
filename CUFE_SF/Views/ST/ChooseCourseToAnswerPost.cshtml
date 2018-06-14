@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "ChooseCourseToAnswerPost";
+    var list = ViewBag.list;
+}
+
+<div class="container"><h2><b>Choose from the courses you're Enrolled in</b></h2><br /></div>
+
+<div class="container">
+    <form action="ViewQuestions" method="get">
+        <div class="alert alert-info" role="alert"><b>Heads up!</b> Click on the course you would like to choose</div>
+        <div class="list-group" role="group" id="courses">
+            <div class="form-group">
+                <div class="well">
+
+                    @foreach (var item in list)
+                    {
+                        <label class="radio-inline"><input type="radio" value="@item" name="Code">@item</label>
+                    }
+                </div>
+            </div>
+
+            <br />
+            <button type="submit" id="PostQues" class="btn btn-default" formmethod="post">Go to course page</button>
+        </div>
+    </form>
+</div>

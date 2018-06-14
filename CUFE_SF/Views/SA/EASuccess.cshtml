@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "EASuccess";
+}
+
+<script>
+     function validateInput() {
+         var ins = document.getElementsByTagName("input");
+         var txs = document.getElementsByTagName("textarea");
+         var pass = true;
+         for (var j = 0; j < txs.length; j++) {
+             if (txs[j].value == "")
+                 pass = false;
+         };
+         for (var j = 0; j < ins.length; j++) {
+             if (ins[j].value == "")
+                 pass = false;
+         };
+
+         if (pass) document.getElementById("addEvent").removeAttribute("disabled");
+         else {
+             var att = document.createAttribute("disabled");
+             document.getElementById("addEvent").setAttributeNode(att);
+         }
+     };
+</script>
+
+<div class="container"><h2><b>Create Event</b></h2><br /></div>
+<div class="container">
+    <form action="AddEvent" method="get" oninput="validateInput();" onload="initMap();">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Primary Details:</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="name">Event Name: </label>
+                            <input type="text" class="form-control" id="ename" name="EName" placeholder="Event Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date: </label>
+                            <input type="text" class="form-control" id="date" name="Date" placeholder="Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="fee">Fee: </label>
+                            <input type="text" class="form-control" id="fee" name="Fee" placeholder="Fee">
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description:</label>
+                            <textarea class="form-control" id="desc" name="Description" placeholder="Describe the event here ..." style="min-width: 100%"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Location">Location:</label>
+                            <textarea class="form-control" id="loc" name="Location" placeholder="Location" style="min-width: 100%"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+        <button type="submit" class="btn btn-default" formmethod="get" id="addEvent" disabled="">Add Event</button>
+    </form>
+</div>
+
+<br /><div class="alert alert-success" role="alert"> Event added successfully</div>

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "PostAnnouncement";
+    var code = ViewBag.code;
+}
+
+<div class="container"><h2><b>Post your announcement below</b></h2><br /></div>
+
+<div class="container">
+    <form action="AddAnnouncement" method="get" oninput="validateInput();">
+
+        <div class="form-group">
+            <label for="TitleArea">Title:</label>
+            <textarea class="form-control" rows="1" id="t1" name="title" placeholder="Title ..." style="min-width: 75%"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="QuesArea">Announcement:</label>
+            <textarea class="form-control" rows="8" id="ques" name="text" placeholder="Write your announcement here ..." style="min-width: 75%"></textarea>
+        </div>
+        <input type="hidden" name="code" value="@code">
+
+        <button type="submit" id="post" class="btn btn-default" formmethod="get" disabled="">Post</button>
+    </form>
+</div>
+
+<script>
+    function validateInput() {
+        var txs = document.getElementsByTagName("textarea");
+        var pass = true;
+        for (var j = 0; j < txs.length; j++) {
+            if (txs[j].value == "")
+                pass = false;
+        };
+        if (pass) document.getElementById("post").removeAttribute("disabled");
+        else {
+            var att = document.createAttribute("disabled");
+            document.getElementById("post").setAttributeNode(att);
+        }
+    };
+</script>

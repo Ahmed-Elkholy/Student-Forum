@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ViewCourseDetails";
+    var usernames = ViewBag.Usernames;
+    var emails = ViewBag.Emails;
+    var size = ViewBag.Size;
+    var empty = ViewBag.Empty;
+}
+
+<div class="container"><h2><b>Course Details</b></h2><br /></div>
+
+<div class="container">
+    @if (!empty)
+
+    {
+        for (var i = 0; i < size; i++)
+        {
+            <text>@usernames[i] &nbsp; @emails[i]</text>
+            <br />
+        }
+
+    }
+    else
+    {
+        <text><h1>Course is Empty</h1>    </text>
+    }
+
+</div>

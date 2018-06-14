@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "DeleteEvent";
+    var list = ViewBag.list;
+}
+
+<div class="container"><h2><b>Delete Event</b></h2><br /></div>
+
+<div class="container">
+    <form action="RemoveEvent" method="get">
+        <div class="alert alert-info" role="alert"><b>Heads up!</b> Click on the event you would like to delete</div>
+        <div class="btn-group" role="group" id="courses">
+            @foreach (var item in list)
+            {
+                <button class="btn btn-default" type="submit" name="EName" value="@item">@item</button>
+            }
+        </div>
+    </form>
+</div>
